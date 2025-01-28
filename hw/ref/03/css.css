@@ -1,0 +1,291 @@
+        /* ==================================隨意上色 */
+        * {
+            box-sizing: border-box;
+            font-family: '微軟正黑體';
+        }
+
+        .box1 {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: salmon;
+            border: 1px solid red;
+            /* border-radius: 100%; */
+        }
+
+        .box3 {
+            height: 73vh;
+        }
+
+        .text-murasaki {
+            color: rebeccapurple;
+            /* margin: 12px; */
+        }
+
+        .bg-red {
+            background-color: red;
+            /* margin: 12px; */
+        }
+
+        .bg-yellow {
+            background-color: yellow;
+            /* margin: 12px; */
+        }
+
+        .bg-nav {
+            background-color: rgb(244, 255, 240);
+            /* margin: 12px; */
+            opacity: 0.9;
+        }
+
+        .bg-blue {
+            background-color: rgb(230, 248, 255);
+            /* margin: 12px; */
+        }
+
+        .bg-skyblue {
+            background-color: skyblue;
+            /* margin: 12px; */
+        }
+
+        .bg-hotpink {
+            background-color: hotpink;
+            /* margin: 12px; */
+        }
+
+        .bg-lawngreen {
+            background-color: lawngreen;
+            /* margin: 12px; */
+        }
+
+        .bg-cas {
+            background-color: #e0fffa;
+            /* opacity: 0.8; */
+        }
+
+        /* ========================炸機icon */
+        #bg-icon {
+
+            background-image: url(https://bbqchicken.com.tw/images/index/info_title.svg );
+            background-repeat: no-repeat;
+            background-size: 250px, 250px;
+            background-attachment: fixed;
+            background-position: 4% 93%;
+            background-color: rgb(255, 255, 255);
+            z-index: 100;
+        }
+
+        /* ==================nav */
+
+
+        /* ===================旋轉木馬底下按鈕:圓圈 */
+        .carousel {
+            position: relative;
+            /* 為容器設定相對定位 */
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            /* 絕對定位，相對於父容器 */
+            bottom: -50px;
+            /* 始終位於圖片下方 */
+            left: 37%;
+            /* 水平居中 */
+            transform: translateX(-50%);
+            /* 修正居中位置 */
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            /* 調整按鈕間距 */
+        }
+
+        .carousel-indicators .cas {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #0062ff;
+            /* 指示器顏色 */
+            margin: 0;
+        }
+
+        .carousel-indicators .cas:hover {
+            background-color: blue;
+        }
+
+        .carousel-inner img {
+            display: block;
+            width: 100%;
+            /* 圖片全寬 */
+            height: auto;
+            /* 高度自適應 */
+        }
+
+
+        /* ============================================================= */
+
+
+        /* =========================右下回到頂端箭頭=========================== */
+        #back-to-top {
+
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            /* 初始透明 */
+            visibility: hidden;
+            /* 初始不可見 */
+            transform: translateY(50px);
+            /* 初始位置往下移 */
+            transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+            /* 過渡效果 */
+        }
+
+        #back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* ================================================footer-h */
+        .footer-hight {
+            height: 30vh;
+        }
+
+        /* ==============================================底下icon ==============================================*/
+
+
+        .icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .a-box {
+            width: 50px;
+            height: 50px;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .dc {
+            color: rgb(0, 30, 255);
+        }
+
+        .a-box>.bi {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            transition: transform 0.3s ease;
+            /* 添加過渡效果 */
+        }
+
+        .a-box>.bi:hover {
+            transform: scale(1.2);
+            /* 使用 scale 從中心放大 */
+        }
+
+
+        /* ===========================文字螢光底線============================= */
+        /* 文字樣式 */
+        .highlight-hover {
+            display: inline-block;
+            position: relative;
+        }
+
+        /* 默認狀態下沒有下劃線 */
+        .highlight-hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 8px;
+            /* 螢光筆的粗度 */
+            background-color: rgba(0, 208, 255, 0.8);
+            /* 螢光筆顏色，這裡選用螢光黃 */
+            transition: width 0.3s ease, left 0.3s ease;
+            z-index: -100;
+        }
+
+        /* 滑鼠游標進入時，橫條從中間延伸出來 */
+        .highlight-hover:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* ==================================== */
+
+
+        .vh-25 {
+            height: 25vh;
+        }
+
+        .header-h {
+            height: 8vh;
+        }
+
+        .container1-vh {
+            height: 80vh;
+        }
+
+        /* .h-25 {
+            height: 25%;
+        } */
+        .fs-b {
+            font-size: 70px;
+            font-weight: bold;
+            justify-content: center;
+            position: relative;
+            right: 7%;
+
+        }
+
+        .fs-bold {
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .copyright {
+            height: 18%;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .container1-vh {
+                height: 30vh;
+            }
+
+            .container2-vh {
+                height: 30vh;
+            }
+
+            .fs-b {
+                font-size: 24px;
+                font-weight: bold;
+                justify-content: center;
+                position: relative;
+                right: 0%;
+            }
+        }
