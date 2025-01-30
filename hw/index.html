@@ -234,10 +234,65 @@
     </div>
     <!-- Shiga -->
 
+    <div class="pageII-space Hokkaido"></div>
+
+
+    <div class="container-fluid mt-5 h-table">
+        <div class="row">
+            <div class="col-10">
+
+                <table class="table " id="myTable">
+                    <thead>
+                        <tr class="rwd-textII">
+                            <th>地區</th>
+                            <th>溫度</th>
+                            <th>降雨機率</th>
+                            <th>舒適度指數</th>
+                            <th>時間</th>
+                        </tr>
+                    </thead>
+                    <tbody class="rwd-textII">
+                        <!-- <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                          <td>john@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>Mary</td>
+                          <td>Moe</td>
+                          <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>July</td>
+                          <td>Dooley</td>
+                          <td>july@example.com</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2">
+
+                <div class="align-items-md-end ">
+                    <div class="rwd-text">
+                        溫度：<span id="tempValue">--</span>°C
+                    </div>
+
+                    <!-- <p class="rwd-font">當前溫度</p> -->
+                    <div class="thermometer ">
+                        <div class="temperature" id="tempBar" style="height: 0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="pageII-space Hokkaido"></div> -->
+    <div class="footer-space Hokkaido"></div>
+
     <!-- footer -->
-    <div id="footer" class="container-fluid footer-hight">
+    <div id="footer" class="container-fluid footer-hight ">
         <div class="row  align-items-center">
-            <div class="col text-center fs-2 mt-2">
+            <div class="col text-center fs-2 mt-5">
                 聯絡我
                 <div class="rwd-font">
 
@@ -272,37 +327,7 @@
 
             </div>
         </div>
-        <div class="container mt-3">
-            <table class="table" id="myTable">
-                <thead>
-                    <tr>
-                        <th>地區</th>
-                        <th>溫度</th>
-                        <th>降雨機率</th>
-                        <th>舒適度指數</th>
-                        <th>時間</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr> -->
-                </tbody>
-            </table>
-        </div>
+
         <footer class="row text-center copyright vh-25">
             <div class="col fs-5 mt-3">
                 <!-- Copyright © 2024 maplesift All rights reserved. -->
@@ -329,48 +354,35 @@
         const myTbody = myTable.find('tbody');
         let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
         let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`
-        $.ajax({
-            type: "get",
-            url: url1,
-            // data: "data",
-            dataType: "Json",
-            success: function (res) {
-                // console.log('res', res);
-                let data = res.records.Locations[0].Location[15];
-                let WeatherElement = data.WeatherElement
-                // 溫度
-                let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature
-                // console.log(Temperature, 'Temperature');
-                // 降雨機率 
-                let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation
-                // console.log(ProbabilityOfPrecipitation, 'ProbabilityOfPrecipitation');
-                // 舒適度指數
-                let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription
-                // console.log(ComfortIndexDescription, 'ComfortIndexDescription');
-                // 時間
-                let DataTime = WeatherElement[0].Time[0].DataTime
-                // console.log(DataTime, 'DataTime');
+        function fetchTemperature() {
+            $.ajax({
+                type: "get",
+                url: url1,
+                // data: "data",
+                dataType: "Json",
+                success: function (res) {
+                    // console.log('res', res);
+                    let data = res.records.Locations[0].Location[15];
+                    let WeatherElement = data.WeatherElement
+                    // 溫度
+                    let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature
+                    // console.log(Temperature, 'Temperature');
+                    // 降雨機率 
+                    let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation
+                    // console.log(ProbabilityOfPrecipitation, 'ProbabilityOfPrecipitation');
+                    // 舒適度指數
+                    let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription
+                    // console.log(ComfortIndexDescription, 'ComfortIndexDescription');
+                    // 時間
+                    let DataTime = WeatherElement[0].Time[0].DataTime
+                    // console.log(DataTime, 'DataTime');
 
-                console.log(data, 'data');
+                    console.log(data, 'data');
+                    // console.log(data.LocationName);
+                    // console.log('WeatherElement', WeatherElement,);
 
-                // console.log(data.LocationName);
-                // console.log('WeatherElement', WeatherElement,);
-
-
-
-                // <th>地區</th>
-                //     <th>溫度</th>
-                //     <th>降雨機率</th>
-                //     <th>舒適度指數</th>
-                //     <th>時間</th>
-
-
-                // $.each(data, function (key, value) {
-
-                // console.log(key, 'key');
-
-                let tmp =
-                    `
+                    let tmp =
+                        `
                         <tr>
                             <td>${data.LocationName}</td>
                             <td>${Temperature}°C</td>
@@ -380,11 +392,12 @@
 
                             </tr>
                             `;
-                myTbody.append(tmp);
-                // })
-            }
-        })
-
+                    myTbody.append(tmp);
+                    $("#tempValue").text(Temperature);  // 顯示數字溫度
+                    updateThermometer(Temperature); // 更新溫度計
+                }
+            })
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const backToTop = document.getElementById('back-to-top');
@@ -404,6 +417,23 @@
                     backToTop.style.transform = 'translateY(50px)'; // 下移回初始位置
                 }
             });
+        });
+
+        function updateThermometer(Temperature) {
+            let minTemp = -10;  // 最低溫度（可調整）
+            let maxTemp = 40;   // 最高溫度（可調整）
+            let height = ((Temperature - minTemp) / (maxTemp - minTemp)) * 100;
+            // 
+            if (height < 0) height = 0;
+            if (height > 100) height = 100;
+
+            $("#tempBar").css("height", height + "%");
+        }
+
+        // 頁面加載時獲取溫度
+        $(document).ready(function () {
+            fetchTemperature();
+            setInterval(fetchTemperature, 600000);  // 每 1 分鐘更新一次
         });
 
         $(document).ready(function () {

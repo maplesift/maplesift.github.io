@@ -1,26 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+    <title>RWD 溫度計</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        * {
-            font-family: "Zen Old Mincho", serif;
-            font-weight: 400;
-            font-style: normal;
+        /* 設定主要樣式 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            /* 讓標題在不同裝置大小適應 */
+        }
+
+        .thermometer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .thermometer {
+            width: clamp(40px, 10vw, 60px);
+            /* 讓溫度計的寬度適應不同裝置 */
+            height: clamp(200px, 60vh, 400px);
+            /* 高度在手機、平板、電腦上自適應 */
+            background: #ddd;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #999;
+            margin-top: 20px;
+        }
+
+        .temperature {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background: red;
+            transition: height 0.5s;
+        }
+
+        .temp-text {
+            margin-top: 10px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            /* 讓溫度數字適應不同裝置 */
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <h1>静岡</h1>
 
-    「こっからってのはとと様も描いてねぇだろぉ？」
+    <h2>當前溫度</h2>
+    <div class="thermometer-container">
+        <div class="thermometer">
+            <div class="temperature" id="tempBar" style="height: 0;"></div>
+        </div>
+        <div class="temp-text">溫度：<span id="tempValue">--</span>°C</div>
+    </div>
+
+    <script src="./pw/pw.js"></script>
+    <script>
+        function fetchTemperature() {
+            let apiKey = "你的API_KEY";  // 🔹 請到 OpenWeather 註冊取得 API KEY
+            let city = "Taipei";  // 🔹 你的城市名稱
+            // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+            let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`
+            $.ajax({
+                type: "get",
+                url: url1,
+                dataType: "Json",
+                success: function (res) {
+                    console.log(res);
+                    let data = res.records.Locations[0].Location[15];
+
+                    let WeatherElement = data.WeatherElement
+                    let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature
+                    console.log(Temperature);
+                    $("#tempValue").text(Temperature);  // 顯示數字溫度
+                    updateThermometer(Temperature); // 更新溫度計
+
+                }
+            })
+
+        }
+
+        function updateThermometer(temp) {
+            let minTemp = -10;  // 最低溫度（可調整）
+            let maxTemp = 40;   // 最高溫度（可調整）
+            let height = ((temp - minTemp) / (maxTemp - minTemp)) * 100;
+
+            if (height < 0) height = 0;
+            if (height > 100) height = 100;
+
+            $("#tempBar").css("height", height + "%");
+        }
+
+        // 頁面加載時獲取溫度
+        $(document).ready(function () {
+            fetchTemperature();
+            setInterval(fetchTemperature, 600000);  // 每 1 分鐘更新一次
+        });
+    </script>
+
 </body>
 
 </html>
