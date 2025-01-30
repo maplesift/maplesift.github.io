@@ -1,0 +1,83 @@
+* {
+    font-family: "微軟正黑體", Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.types {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 50px;
+    box-shadow: 2px 2px 5px #ccc;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+    transform: scale(1);
+    top: 0;
+}
+
+.types:hover {
+    border: 2px solid blue;
+    background: lightcyan;
+    transition: all 0.5s ease;
+    transform: scale(1.08);
+    top: -2px;
+}
+
+.header {
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 32px;
+}
+
+ul li {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 10px #999;
+}
+
+ul li:hover {
+    background: lightgreen;
+    padding: 8px 13px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+/* ===========================文字螢光底線============================= */
+/* 文字樣式 */
+.highlight-hover {
+    /* display: inline-block;    */
+    position: relative;
+}
+
+/* 默認狀態下沒有下劃線 */
+.highlight-hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 8px;
+    /* 螢光筆的粗度 */
+    background-color: rgba(0, 208, 255, 0.8);
+    /* 螢光筆顏色，這裡選用螢光黃 */
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: -100;
+}
+
+/* 滑鼠游標進入時，橫條從中間延伸出來 */
+.highlight-hover:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* ==================================== */
