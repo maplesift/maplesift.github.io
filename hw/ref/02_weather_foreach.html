@@ -44,48 +44,48 @@
                 </tr> -->
             </tbody>
         </table>
+    </div>
 
 
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- js include 順序 1.bs 2.jq 3.self -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
-            integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./pw.js"></script>
+    <script>
+        $(document).ready(function () {
+            const myTable = $('#myTable');
+            const myTbody = myTable.find('tbody');
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
+            $.ajax({
+                type: "get",
+                url: url,
+                // data: "data",
+                dataType: "Json",
+                success: function (res) {
+                    console.log('res', res);
+                    let data12 = res.records.location[12].locationName;
+                    let data1 = res.records.location[1];
+                    let data = res.records.location;
+                    console.log('台東', data12);
+                    console.log('新北', data1);
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="./pw.js"></script>
-        <script>
-            $(document).ready(function () {
-                const myTable = $('#myTable');
-                const myTbody = myTable.find('tbody');
-                let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    // data: "data",
-                    dataType: "Json",
-                    success: function (res) {
-                        console.log('res', res);
-                        let data12 = res.records.location[12].locationName;
-                        let data1 = res.records.location[1];
-                        let data = res.records.location;
-                        console.log('台東', data12);
-                        console.log('新北', data1);
-
-                        $.each(data, function (key, value) {
-                            // id
-                            console.log('key', key);
-                            // 縣市名
-                            console.log('value', value.locationName);
-                            console.log('parameter', value.weatherElement[3].time[0].parameter);
-                            // 舒適度
-                            let ci = value.weatherElement[3].time[0].parameter.parameterName;
-                            // 降雨機率
-                            let pop = value.weatherElement[1].time[2].parameter.parameterName;
-                            let tmp =
-                                `
+                    $.each(data, function (key, value) {
+                        // id
+                        console.log('key', key);
+                        // 縣市名
+                        console.log('value', value.locationName);
+                        console.log('parameter', value.weatherElement[3].time[0].parameter);
+                        // 舒適度
+                        let ci = value.weatherElement[3].time[0].parameter.parameterName;
+                        // 降雨機率
+                        let pop = value.weatherElement[1].time[2].parameter.parameterName;
+                        let tmp =
+                            `
                                     <tr>
                                        <td>${key}</td>
                                        <td>${value.locationName}</td>
@@ -94,14 +94,13 @@
 
                                     </tr>
                                 `;
-                            myTbody.append(tmp);
-                        })
+                        myTbody.append(tmp);
+                    })
+                }
+            })
 
-                    }
-                })
-
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>

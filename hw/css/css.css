@@ -1,7 +1,7 @@
         /* ==================================隨意上色 */
         * {
             box-sizing: border-box;
-            font-family: '微軟正黑體';
+            /* font-family: '微軟正黑體'; */
         }
 
         .box1 {
@@ -81,6 +81,28 @@
             background-color: rgb(255, 255, 255);
             z-index: 100;
         }
+
+        /* bg-color */
+
+
+        /* .Saitama {
+            background-color: rgb(93, 63, 63);
+        }
+
+        .font-color-w {
+            color: #e2e2e2;
+
+        }
+
+        .Ibaraki {
+            background-color: rgb(255, 179, 217);
+        }
+
+        .Hokkaido {
+            background-color: rgba(78, 2, 58, 0.531);
+        } */
+
+        /* bg-color end */
 
         /* ==================nav */
 
@@ -242,13 +264,15 @@
             height: 8vh;
         }
 
-        .container1-vh {
-            /* height: 80vh; */
+
+
+        .page-space {
+            height: 13vh;
+            /* background-color: #007bff; */
         }
 
-        #page1 {
-            height: 10vh;
-            /* background-color: #007bff; */
+        .pageII-space {
+            height: 5vh;
         }
 
         /* .h-25 {
@@ -283,20 +307,18 @@
 
         /* rwd 文字 */
         .rwd-font {
-            font-size: clamp(1.0rem, 2vw, 3rem);
+            font-size: clamp(0.9rem, 2vw, 3rem);
             /* 最小1.5rem，最大3rem，根據視口調整 */
         }
 
         .rwd-text {
-            font-size: clamp(0.5rem, 2vw, 1.5rem);
+            font-size: clamp(0.4rem, 1.5vw, 1.5rem);
             /* 最小1.5rem，最大3rem，根據視口調整 */
         }
 
         /* 媒體700px */
         @media only screen and (max-width: 700px) {
-            .container1-vh {
-                height: 30vh;
-            }
+
 
             .vh-100 {
                 height: 16vh !important;
@@ -307,7 +329,15 @@
             }
 
             .mt-5 {
-                margin-top: 0.5rem !important;
+                margin-top: 0.4rem !important;
+            }
+
+            .mt-1 {
+                margin-top: 0.05rem !important;
+            }
+
+            .mt-2 {
+                margin-top: 0.15rem !important;
             }
 
             .carousel-indicators {
