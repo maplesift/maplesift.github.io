@@ -12,20 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="icon" href="./icon/Marie Antoinette (Summer) 1.png" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="./css/css.css">
-    <!-- 字體 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap" rel="stylesheet">
     <style>
-        * {
-            font-family: "Zen Old Mincho", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
 
-        .font-bold {
-            font-weight: bold;
-        }
     </style>
 </head>
 
@@ -42,28 +30,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold " aria-current="home" href="#home">Home</a>
+                        <a class="nav-link active highlight-hover fs-bold" aria-current="page1" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold zen-old-mincho-regular"
-                            aria-current="Shizuoka" href="#Shizuoka">静岡</a>
+                        <a class="nav-link active highlight-hover fs-bold" aria-current="page2" href="#page2">餐點介紹</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold" aria-current="Saitama" href="Saitama">埼玉</a>
+                        <!-- <a class="nav-link active highlight-hover " href="#hw">作品一覽</a> -->
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold" aria-current="Ibaraki" href="Ibaraki">茨城</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold" aria-current="Hokkaido"
-                            href="Hokkaido">北海道</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active highlight-hover fs-bold" aria-current="Shiga" href="Shiga">滋賀</a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link active highlight-hover fs-bold" href="#footer">聯絡我</a>
                     </li>
@@ -77,9 +53,29 @@
 
     </div>
 
-    <!-- home -->
-    <!-- <div id="page1"></div> -->
-    <!-- Carousel -->
+    <!-- container1 -->
+    <!-- <div id="page1"></div>
+    <div class="container-fluid container1-vh ">
+        <div class="h-100">
+            <div class="row h-100 d-flex align-items-center">
+                <div class="col-1 "></div>
+                <div class="col-5 ">
+                </div>
+                <div class="col-5  h-100 d-flex align-items-center  ">
+                    <div class="d-none d-md-block fs-4">
+
+                    </div>
+                    <div class="d-block d-md-none">
+
+                    </div>
+                </div>
+                <div class="col-1 "></div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- container2 -->
+    <div id="page1"></div>
     <div class="container-fluid" id="home">
         <div class="row">
             <!-- col- -->
@@ -103,19 +99,19 @@
                     <!-- The slideshow/carousel -->
                     <div class="carousel-inner rounded-5">
                         <div class="carousel-item active">
-                            <img src="./icon/Shizuoka.jpg" alt="Shizuoka" class="d-block  img-fluid">
+                            <img src="./icon/t4i7Qgd.jpg" alt="Los Angeles" class="d-block  img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="./icon/Saitama.jpg" alt="Saitama" class="d-block  img-fluid">
+                            <img src="./icon/hkb6hB2.jpg" alt="Chicago" class="d-block  img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="./icon/Ibaraki.jpg" alt="Ibaraki" class="d-block  img-fluid">
+                            <img src="./icon/9onACNw.jpg" alt="New York" class="d-block  img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="./icon/HokkaidoFurano.jpg" alt="Hokkaido" class="d-block  img-fluid">
+                            <img src="" alt="New York" class="d-block  img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="./icon/Shiga.jpg" alt="Shiga" class="d-block  img-fluid">
+                            <img src="" alt="New York" class="d-block  img-fluid">
                         </div>
                     </div>
 
@@ -132,41 +128,7 @@
 
     </div>
 
-    <!-- Shizuoka -->
-    <div id="page1"></div>
-
-    <div class="container-fluid container1-vh " id="Shizuoka">
-        <div class="h-100">
-            <div class="row h-100 d-flex ">
-                <!-- <div class="col-1 "></div> -->
-                <!-- icom -->
-                <div class="col-7 ">
-                    <img src="./icon/Shizuoka.jpg" class="img-fluid img-radius" alt="Shizuoka" title="Shizuoka">
-                </div>
-                <!-- text -->
-                <div class="col-5  h-100 ">
-                    <div class="  text-center text-possion rwd-font">
-                        <h3 class="font-bold mt-5">静岡県</h2>
-                            <div class="mt-1">富士山南麓</div>
-                            <div class="mt-5">葛飾北斎</div>
-                            <div class="mt-2 rwd-text ">「こっからってのはとと様も描いてねぇだろぉ？」</div>
-
-                    </div>
-                    <!-- <div class="d-block d-md-none ">
-                        <h2 font-bold>静岡</h2>
-                        <h4>富士山南麓</h4>
-                        <h2>静岡</h2>
-                        <h4>「こっからってのはとと様も描いてねぇだろぉ？」</h4>
-                    </div> -->
-                </div>
-                <!-- <div class="col-1 "></div> -->
-            </div>
-        </div>
-    </div>
-    <!-- Saitama -->
-    <!-- Ibaraki -->
-    <!-- Hokkaido -->
-    <!-- Shiga -->
+    <!-- container3 作品 -->
 
     <!-- footer -->
     <div id="footer" class="container-fluid footer-hight">

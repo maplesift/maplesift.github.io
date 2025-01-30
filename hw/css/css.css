@@ -94,7 +94,7 @@
         .carousel-indicators {
             position: absolute;
             /* 絕對定位，相對於父容器 */
-            bottom: -50px;
+            bottom: -30px;
             /* 始終位於圖片下方 */
             left: 37%;
             /* 水平居中 */
@@ -110,13 +110,13 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: #0062ff;
+            background-color: #c3c3c3;
             /* 指示器顏色 */
             margin: 0;
         }
 
         .carousel-indicators .cas:hover {
-            background-color: blue;
+            background-color: rgb(158, 158, 158);
         }
 
         .carousel-inner img {
@@ -243,7 +243,12 @@
         }
 
         .container1-vh {
-            height: 80vh;
+            /* height: 80vh; */
+        }
+
+        #page1 {
+            height: 10vh;
+            /* background-color: #007bff; */
         }
 
         /* .h-25 {
@@ -272,13 +277,41 @@
             align-items: center;
         }
 
+        .img-radius {
+            border-radius: 11px;
+        }
+
+        /* rwd 文字 */
+        .rwd-font {
+            font-size: clamp(1.0rem, 2vw, 3rem);
+            /* 最小1.5rem，最大3rem，根據視口調整 */
+        }
+
+        .rwd-text {
+            font-size: clamp(0.5rem, 2vw, 1.5rem);
+            /* 最小1.5rem，最大3rem，根據視口調整 */
+        }
+
+        /* 媒體700px */
         @media only screen and (max-width: 700px) {
             .container1-vh {
                 height: 30vh;
             }
 
+            .vh-100 {
+                height: 16vh !important;
+            }
+
             .container2-vh {
                 height: 30vh;
+            }
+
+            .mt-5 {
+                margin-top: 0.5rem !important;
+            }
+
+            .carousel-indicators {
+                bottom: -70px;
             }
 
             .fs-b {
