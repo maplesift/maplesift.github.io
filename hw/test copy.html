@@ -49,9 +49,13 @@
         /* 讓溫度數字適應不同裝置 */
         font-weight: bold;
     }
+
+    #locationSelect>option {
+        font-size: 20px;
+    }
 </style>
 <select id="locationSelect" multiple>
-    <!-- <option value=""></option> -->
+    <option value=""></option>
 </select>
 <h2>當前溫度</h2>
 <div class="thermometer-container">
@@ -94,12 +98,8 @@
 
                 // 清空 select 選單
                 locationSelect.empty().append('<option value="0">請選擇地區</option>');
-
                 // 將所有地區名稱加入 <select>
                 locationsData.forEach((location, index) => {
-                    // console.log(index, 'index');
-                    // console.log(location, 'location');
-
                     locationSelect.append(`<option value="${index}">${location.LocationName}</option>`);
                 });
 
@@ -137,6 +137,7 @@
         $("#tempValue").text(Temperature);  // 顯示數字溫度
         updateThermometer(Temperature); // 更新溫度計
     });
+
     function updateThermometer(temp) {
         let minTemp = -10;  // 最低溫度（可調整）
         let maxTemp = 40;   // 最高溫度（可調整）

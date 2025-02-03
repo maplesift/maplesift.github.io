@@ -237,10 +237,15 @@
     <div class="pageII-space Hokkaido"></div>
 
 
+    <div class="col-5">
+        <select id="locationSelect" class="form-select form-select-lg">
+            <!-- <option value=""></option> -->
+        </select>
+    </div>
     <div class="container-fluid mt-5 h-table">
         <div class="row">
-            <div class="col-10">
 
+            <div class="col-10">
                 <table class="table " id="myTable">
                     <thead>
                         <tr class="rwd-textII">
@@ -271,7 +276,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-2">
+            <div class="col-1">
 
                 <div class="align-items-md-end ">
                     <div class="rwd-text">
@@ -348,56 +353,75 @@
         </script>
     <script src="./pw/pwd.js"></script>
     <script>
-
+        let locationsData = []; // 儲存所有地區的氣象資料
 
         const myTable = $('#myTable');
         const myTbody = myTable.find('tbody');
+        const locationSelect = $('#locationSelect');
         let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
         let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`
         function fetchTemperature() {
             $.ajax({
                 type: "get",
                 url: url1,
-                // data: "data",
-                dataType: "Json",
+                dataType: "json",
                 success: function (res) {
-                    // console.log('res', res);
                     let Locations = res.records.Locations[0];
-                    let data = Locations.Location[15];
-                    let WeatherElement = data.WeatherElement
-                    // 溫度
-                    let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature
-                    // console.log(Temperature, 'Temperature');
-                    // 降雨機率 
-                    let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation
-                    // console.log(ProbabilityOfPrecipitation, 'ProbabilityOfPrecipitation');
-                    // 舒適度指數
-                    let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription
-                    // console.log(ComfortIndexDescription, 'ComfortIndexDescription');
-                    // 時間
-                    let DataTime = WeatherElement[0].Time[0].DataTime
-                    // console.log(DataTime, 'DataTime');
+                    locationsData = Locations.Location; // 儲存所有地區
 
-                    console.log(data, 'data');
-                    // console.log(data.LocationName);
-                    // console.log('WeatherElement', WeatherElement,);
-                    let tmp =
-                        `
-                        <tr>
-                            <td>${data.LocationName}</td>
-                            <td>${Temperature}°C</td>
-                            <td>${ProbabilityOfPrecipitation}%</td>
-                            <td>${ComfortIndexDescription}</td>
-                             <td>${DataTime}</td>
-                        </tr>
-                        `;
-                    myTbody.append(tmp);
+                    // 清空 select 選單
+                    locationSelect.empty().append('<option value="0">請選擇地區</option>');
+                    // 將所有地區名稱加入 <select>
+                    locationsData.forEach((location, index) => {
+                        locationSelect.append(`<option value="${index}">${location.LocationName}</option>`);
+                    });
 
-                    $("#tempValue").text(Temperature);  // 顯示數字溫度
-                    updateThermometer(Temperature); // 更新溫度計
+                    console.log("地區列表已更新");
+
                 }
-            })
+            });
         }
+
+        // 監聽地區選擇變更
+        $('#locationSelect').on('change', function () {
+            let selectedIndex = $(this).val();
+            if (selectedIndex === "") return; // 如果沒有選擇地區則不執行
+
+            const myTbody = $('#myTable tbody');
+            myTbody.empty(); // 清空表格
+
+            let data = locationsData[selectedIndex];
+            let WeatherElement = data.WeatherElement;
+
+            // 溫度
+            let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature;
+            // console.log(Temperature, 'Temperature');
+
+            // 降雨機率 
+            let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation;
+            // console.log(ProbabilityOfPrecipitation, 'ProbabilityOfPrecipitation');
+
+            // 舒適度指數
+            let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription;
+            // console.log(ComfortIndexDescription, 'ComfortIndexDescription');
+
+            // 時間
+            let DataTime = WeatherElement[0].Time[0].DataTime;
+            // console.log(DataTime, 'DataTime');
+
+            let tmp = `
+            <tr>
+                <td>${data.LocationName}</td>
+                <td>${Temperature}°C</td>
+                <td>${ProbabilityOfPrecipitation}%</td>
+                <td>${ComfortIndexDescription}</td>
+                <td>${DataTime}</td>
+            </tr>
+        `;
+            myTbody.append(tmp);
+            $("#tempValue").text(Temperature);  // 顯示數字溫度
+            updateThermometer(Temperature); // 更新溫度計
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const backToTop = document.getElementById('back-to-top');
@@ -433,7 +457,7 @@
         // 頁面加載時獲取溫度
         $(document).ready(function () {
             fetchTemperature();
-            setInterval(fetchTemperature, 600000);  // 每 10 分鐘更新一次
+            setInterval(fetchTemperature, 1200000);  // 每 20 分鐘更新一次
         });
 
         $(document).ready(function () {
