@@ -61,7 +61,45 @@
 </head>
 
 <body>
-
+    <select name="" id="">
+        <option value=""></option>
+    </select>
+    <select name="cars" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="bmw">BMW</option>
+        <option value="saab">Saab</option>
+        <option value="benz">Benz</option>
+        <option value="audi">Audi</option>
+    </select>
+    <table class="table " id="myTable">
+        <thead>
+            <tr class="rwd-textII">
+                <th>地區</th>
+                <th>溫度</th>
+                <th>降雨機率</th>
+                <th>舒適度指數</th>
+                <th>時間</th>
+            </tr>
+        </thead>
+        <tbody class="rwd-textII">
+            <!-- <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr> -->
+        </tbody>
+    </table>
     <h2>當前溫度</h2>
     <div class="thermometer-container">
         <div class="thermometer">
@@ -70,30 +108,51 @@
         <div class="temp-text">溫度：<span id="tempValue">--</span>°C</div>
     </div>
 
-    <script src="./pw/pw.js"></script>
+    <script src="./pw/pwd.js"></script>
     <script>
+
         function fetchTemperature() {
-            let apiKey = "你的API_KEY";  // 🔹 請到 OpenWeather 註冊取得 API KEY
-            let city = "Taipei";  // 🔹 你的城市名稱
-            // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+            const myTable = $('#myTable');
+            const myTbody = myTable.find('tbody');
             let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`
+
             $.ajax({
                 type: "get",
                 url: url1,
                 dataType: "Json",
                 success: function (res) {
-                    console.log(res);
-                    let data = res.records.Locations[0].Location[15];
-
+                    // console.log('res', res);
+                    let Locations = res.records.Locations[0];
+                    let data = Locations.Location[15];
                     let WeatherElement = data.WeatherElement
+                    // 溫度
                     let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature
-                    console.log(Temperature);
+                    // 降雨機率 
+                    let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation
+                    // 舒適度指數
+                    let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription
+                    // 時間
+                    let DataTime = WeatherElement[0].Time[0].DataTime
+                    // console.log(DataTime, 'DataTime');
+                    console.log(data, 'data');
+
+                    let tmp =
+                        `
+                        <tr>
+                            <td>${data.LocationName}</td>
+                            <td>${Temperature}°C</td>
+                            <td>${ProbabilityOfPrecipitation}%</td>
+                            <td>${ComfortIndexDescription}</td>
+                             <td>${DataTime}</td>
+                        </tr>
+                        `;
+                    myTbody.append(tmp);
+
                     $("#tempValue").text(Temperature);  // 顯示數字溫度
                     updateThermometer(Temperature); // 更新溫度計
-
                 }
             })
-
         }
 
         function updateThermometer(temp) {

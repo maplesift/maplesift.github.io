@@ -1,0 +1,154 @@
+<style>
+    /* 設定主要樣式 */
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+        /* 讓標題在不同裝置大小適應 */
+    }
+
+    .thermometer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .thermometer {
+        width: clamp(40px, 10vw, 60px);
+        /* 讓溫度計的寬度適應不同裝置 */
+        height: clamp(200px, 60vh, 400px);
+        /* 高度在手機、平板、電腦上自適應 */
+        background: #ddd;
+        border-radius: 25px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid #999;
+        margin-top: 20px;
+    }
+
+    .temperature {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: red;
+        transition: height 0.5s;
+    }
+
+    .temp-text {
+        margin-top: 10px;
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        /* 讓溫度數字適應不同裝置 */
+        font-weight: bold;
+    }
+</style>
+<select id="locationSelect" multiple>
+    <!-- <option value=""></option> -->
+</select>
+<h2>當前溫度</h2>
+<div class="thermometer-container">
+    <div class="thermometer">
+        <div class="temperature" id="tempBar" style="height: 0;"></div>
+    </div>
+    <div class="temp-text">溫度：<span id="tempValue">--</span>°C</div>
+</div>
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>地區</th>
+            <th>溫度</th>
+            <th>降雨機率</th>
+            <th>舒適度</th>
+            <th>時間</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script src="./pw/pwd.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let locationsData = []; // 儲存所有地區的氣象資料
+
+    function fetchTemperature() {
+        const myTable = $('#myTable');
+        const myTbody = myTable.find('tbody');
+        const locationSelect = $('#locationSelect');
+        let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`;
+
+        $.ajax({
+            type: "get",
+            url: url1,
+            dataType: "json",
+            success: function (res) {
+                let Locations = res.records.Locations[0];
+                locationsData = Locations.Location; // 儲存所有地區
+
+                // 清空 select 選單
+                locationSelect.empty().append('<option value="0">請選擇地區</option>');
+
+                // 將所有地區名稱加入 <select>
+                locationsData.forEach((location, index) => {
+                    // console.log(index, 'index');
+                    // console.log(location, 'location');
+
+                    locationSelect.append(`<option value="${index}">${location.LocationName}</option>`);
+                });
+
+                console.log("地區列表已更新");
+
+            }
+        });
+    }
+
+    // 監聽地區選擇變更
+    $('#locationSelect').on('change', function () {
+        let selectedIndex = $(this).val();
+        if (selectedIndex === "") return; // 如果沒有選擇地區則不執行
+
+        const myTbody = $('#myTable tbody');
+        myTbody.empty(); // 清空表格
+
+        let data = locationsData[selectedIndex];
+        let WeatherElement = data.WeatherElement;
+        let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature;
+        let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation;
+        let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription;
+        let DataTime = WeatherElement[0].Time[0].DataTime;
+
+        let tmp = `
+            <tr>
+                <td>${data.LocationName}</td>
+                <td>${Temperature}°C</td>
+                <td>${ProbabilityOfPrecipitation}%</td>
+                <td>${ComfortIndexDescription}</td>
+                <td>${DataTime}</td>
+            </tr>
+        `;
+        myTbody.append(tmp);
+        $("#tempValue").text(Temperature);  // 顯示數字溫度
+        updateThermometer(Temperature); // 更新溫度計
+    });
+    function updateThermometer(temp) {
+        let minTemp = -10;  // 最低溫度（可調整）
+        let maxTemp = 40;   // 最高溫度（可調整）
+        let height = ((temp - minTemp) / (maxTemp - minTemp)) * 100;
+
+        if (height < 0) height = 0;
+        if (height > 100) height = 100;
+
+        $("#tempBar").css("height", height + "%");
+    }
+
+    // 執行 API 請求
+    fetchTemperature();
+
+</script>
