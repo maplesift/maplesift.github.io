@@ -108,6 +108,8 @@
         const myTbody = myTable.find('tbody');
         const locationSelect = $('#locationSelect');
         let urlNewTaipei = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`;
+        let urlTaiwan = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
+
 
         $.ajax({
             type: "get",

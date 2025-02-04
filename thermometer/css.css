@@ -1,0 +1,258 @@
+/* 設定主要樣式 */
+
+* {
+    font-size: 20px;
+    text-align: left;
+}
+
+body {
+    background-color: rgb(247, 253, 255);
+}
+
+
+
+.space {
+    display: block;
+    /* width: 300px; */
+    height: 500px;
+    /* background-color: skyblue; */
+}
+
+.north-space {
+    height: 40px;
+    background-color: silver;
+    opacity: 0.8;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    /* 讓標題在不同裝置大小適應 */
+}
+
+.thermometer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thermometer {
+    width: clamp(40px, 10vw, 60px);
+    /* 讓溫度計的寬度適應不同裝置 */
+    height: clamp(200px, 60vh, 400px);
+    /* 高度在手機、平板、電腦上自適應 */
+    background: #ddd;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #999;
+    margin-top: 20px;
+}
+
+.temperature {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: red;
+    transition: height 0.5s;
+}
+
+.temp-text {
+    margin-top: 10px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    /* 讓溫度數字適應不同裝置 */
+    font-weight: bold;
+}
+
+#locationSelect>option {
+    font-size: 20px;
+}
+
+.bg-red {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+
+.bg-yellow {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+}
+
+.bg-green {
+    background-color: green;
+    width: 50px;
+    height: 50px;
+}
+
+.bg-blue {
+    background-color: blue;
+    height: 50px;
+    width: 50px;
+}
+
+/* ======================================地點 */
+
+#taiwan {
+    background-repeat: no-repeat;
+    background-image: url(./icon/map.png);
+    height: 971px;
+    background-size: contain;
+}
+
+#keelung {
+    /* float: right; */
+    position: relative;
+    top: 70px;
+    right: -530px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#taipei {
+    /* float: right; */
+    position: relative;
+    top: 40px;
+    right: -465px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#newTaipei {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#taoyuan {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#hsinchu {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#miaoli {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#taichung {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#changhua {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#nantou {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#yunlin {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#chiayi {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#tainan {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#kaohsiung {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#pingtung {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#yilan {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#hualien {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#taitung {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#taitung {
+    position: relative;
+    top: 70px;
+    right: -475px;
+    font-weight: bold;
+    text-align: left;
+}

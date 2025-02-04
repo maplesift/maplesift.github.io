@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <!-- link css 順序 1.bs 2.self -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container mt-5 vh-100">
+        <div class="row">
+            <div class="col-5">
+                <select id="locationSelect" multiple class="">
+                    <option value=""></option>
+                </select>
+
+                <table id="myTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>地區</th>
+                            <th>溫度</th>
+                            <th>降雨機率</th>
+                            <th>舒適度</th>
+                            <th>時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="col-1"> -->
+            <!-- <div class="thermometer-container">
+                    <div class="thermometer">
+                        <div class="temperature" id="tempBar" style="height: 0;"></div>
+                    </div>
+                    <div class="temp-text">溫度：<span id="tempValue">--</span>°C</div>
+                </div> -->
+
+            <!-- </div> -->
+            <div class="col-6" id="taiwan">
+
+                <div id="keelung">基隆</div>
+                <div id="taipei">台北</div>
+                <div id="newTaipei">新北</div>
+                <div id="taoyuan">桃園</div>
+                <div id="hsinchu">新竹</div>
+                <div id="miaoli">苗栗</div>
+                <div id="taichung">臺中</div>
+                <div id="changhua">彰化</div>
+                <div id="nantou">南投</div>
+                <div id="chiayi ">嘉義</div>
+                <div id="yunlin">雲林</div>
+                <div id="tainan">台南</div>
+                <div id="kaohsiung">高雄</div>
+                <div id="pingtung">屏東</div>
+                <div id="yilan">宜蘭</div>
+                <div id="hualien">花蓮</div>
+                <div id="taitung">台東</div>
+                <!-- <div id="taipei">台北</div> -->
+                <!-- <div id="taipei">台北</div> -->
+                <!-- <div id="taipei">台北</div> -->
+                <!-- <div id="taipei">台北</div> -->
+                <!-- <img src="./icon/map.png" alt="" class="img-fluid"> -->
+            </div>
+        </div>
+    </div>
+    <script src="../pw/pwd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let locationsData = []; // 儲存所有地區的氣象資料
+
+        function fetchTemperature() {
+            const myTable = $('#myTable');
+            const myTbody = myTable.find('tbody');
+            const locationSelect = $('#locationSelect');
+            let urlNewTaipei = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`;
+            let urlTaiwan = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
+
+            $.ajax({
+                type: "get",
+                url: urlNewTaipei,
+                dataType: "json",
+                success: function (res) {
+                    let Locations = res.records.Locations[0];
+                    locationsData = Locations.Location; // 儲存所有地區
+
+                    // 清空 select 選單
+                    locationSelect.empty().append('<option value="0">請選擇地區</option>');
+                    // 將所有地區名稱加入 <select>
+                    locationsData.forEach((location, index) => {
+                        locationSelect.append(`<option value="${index}">${location.LocationName}</option>`);
+                    });
+
+                    console.log("地區列表已更新");
+
+                }
+            });
+        }
+
+        // 監聽地區選擇變更
+        $('#locationSelect').on('change', function () {
+            let selectedIndex = $(this).val();
+            if (selectedIndex === "") return; // 如果沒有選擇地區則不執行
+
+            const myTbody = $('#myTable tbody');
+            myTbody.empty(); // 清空表格
+
+            let data = locationsData[selectedIndex];
+            let WeatherElement = data.WeatherElement;
+            let Temperature = WeatherElement[0].Time[0].ElementValue[0].Temperature;
+            let ProbabilityOfPrecipitation = WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation;
+            let ComfortIndexDescription = WeatherElement[4].Time[0].ElementValue[0].ComfortIndexDescription;
+            let DataTime = WeatherElement[0].Time[0].DataTime;
+
+            let tmp = `
+                <tr>
+                    <td>${data.LocationName}</td>
+                    <td>${Temperature}°C</td>
+                    <td>${ProbabilityOfPrecipitation}%</td>
+                    <td>${ComfortIndexDescription}</td>
+                    <td>${DataTime}</td>
+                </tr>
+            `;
+            myTbody.append(tmp);
+            $("#tempValue").text(Temperature);  // 顯示數字溫度
+            updateThermometer(Temperature); // 更新溫度計
+        });
+
+        function updateThermometer(temp) {
+            let minTemp = -10;  // 最低溫度（可調整）
+            let maxTemp = 40;   // 最高溫度（可調整）
+            let height = ((temp - minTemp) / (maxTemp - minTemp)) * 100;
+
+            if (height < 0) height = 0;
+            if (height > 100) height = 100;
+
+            $("#tempBar").css("height", height + "%");
+        }
+
+        // 執行 API 請求
+        fetchTemperature();
+
+    </script>
+</body>
+
+</html>
