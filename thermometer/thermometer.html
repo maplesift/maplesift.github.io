@@ -57,7 +57,15 @@
     #locationSelect>option {
         font-size: 20px;
     }
+
+    #myTable thead tr th {
+        width: 3%;
+    }
 </style>
+<!-- link css 順序 1.bs 2.self -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <select id="locationSelect" multiple>
     <option value=""></option>
 </select>
@@ -68,20 +76,29 @@
     </div>
     <div class="temp-text">溫度：<span id="tempValue">--</span>°C</div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col2">
 
-<table id="myTable">
-    <thead>
-        <tr>
-            <th>地區</th>
-            <th>溫度</th>
-            <th>降雨機率</th>
-            <th>舒適度</th>
-            <th>時間</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-<script src="./pw/pwd.js"></script>
+        </div>
+        <div class="col-10">
+
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th>地區</th>
+                        <th>溫度</th>
+                        <th>降雨機率</th>
+                        <th>舒適度</th>
+                        <th>時間</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../pw/pwd.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let locationsData = []; // 儲存所有地區的氣象資料
@@ -90,11 +107,11 @@
         const myTable = $('#myTable');
         const myTbody = myTable.find('tbody');
         const locationSelect = $('#locationSelect');
-        let url1 = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`;
+        let urlNewTaipei = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-069?Authorization=${pwd}`;
 
         $.ajax({
             type: "get",
-            url: url1,
+            url: urlNewTaipei,
             dataType: "json",
             success: function (res) {
                 let Locations = res.records.Locations[0];
