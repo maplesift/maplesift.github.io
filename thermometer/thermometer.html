@@ -1,75 +1,15 @@
-<style>
-    /* 設定主要樣式 */
-    * {
-        font-size: 20px;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
-
-    h2 {
-        font-size: clamp(1.2rem, 2.5vw, 2rem);
-        /* 讓標題在不同裝置大小適應 */
-    }
-
-    .thermometer-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .thermometer {
-        width: clamp(40px, 10vw, 60px);
-        /* 讓溫度計的寬度適應不同裝置 */
-        height: clamp(200px, 60vh, 400px);
-        /* 高度在手機、平板、電腦上自適應 */
-        background: #ddd;
-        border-radius: 25px;
-        position: relative;
-        overflow: hidden;
-        border: 2px solid #999;
-        margin-top: 20px;
-    }
-
-    .temperature {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        background: red;
-        transition: height 0.5s;
-    }
-
-    .temp-text {
-        margin-top: 10px;
-        font-size: clamp(1rem, 2vw, 1.5rem);
-        /* 讓溫度數字適應不同裝置 */
-        font-weight: bold;
-    }
-
-    #locationSelect>option {
-        font-size: 20px;
-    }
-
-    #myTable thead tr th {
-        width: 3%;
-    }
-</style>
 <!-- link css 順序 1.bs 2.self -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
     integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-<select id="locationSelect" multiple>
-    <option value=""></option>
-</select>
-<h2>當前溫度</h2>
+<link rel="stylesheet" href="./css.css">
+<div class="row">
+
+    <select id="locationSelect" class="form-select col-4">
+        <option value=""></option>
+    </select>
+</div>
+<h2 class="mt-2">當前溫度</h2>
 <div class="thermometer-container">
     <div class="thermometer">
         <div class="temperature" id="tempBar" style="height: 0;"></div>
@@ -78,10 +18,10 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col2">
+        <div class="col-2">
 
         </div>
-        <div class="col-10">
+        <div class="col-8">
 
             <table id="myTable" class="table">
                 <thead>

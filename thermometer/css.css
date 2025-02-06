@@ -49,7 +49,7 @@ h2 {
 .thermometer {
     width: clamp(40px, 10vw, 60px);
     /* 讓溫度計的寬度適應不同裝置 */
-    height: clamp(200px, 60vh, 400px);
+    height: clamp(200px, 40vh, 400px);
     /* 高度在手機、平板、電腦上自適應 */
     background: #ddd;
     border-radius: 25px;
