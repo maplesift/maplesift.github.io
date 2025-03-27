@@ -1,0 +1,399 @@
+/* center all , large and medium and small 0.2em */
+html[lang=zh-TW] .centerall_222 { padding-left: 0.2em; }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_222 { padding-left: 0.2em; } }
+@media only screen and (max-width: 735px) and (max-device-width: 768px) { html[lang=zh-TW] .centerall_222 { padding-left: 0.2em;  } }
+
+/* center all , large and medium and small 0.8em */
+/* html[lang=zh-TW] .centerall_888 { padding-left: 0.8em; }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_888 { padding-left: 0.8em; } }
+@media only screen and (max-width: 735px) and (max-device-width: 768px) { html[lang=zh-TW] .centerall_888 { padding-left: 0.8em;  } } */
+
+/* center all , large and medium and small 0.4em , xsmall 0.2em */
+html[lang=zh-TW] .centerall_nonSE { padding-left: 0.4em; }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_nonSE { padding-left: 0.4em; } }
+@media only screen and (max-width: 735px) and (max-device-width: 768px) { html[lang=zh-TW] .centerall_nonSE { padding-left: 0.4em;  } }
+@media only screen and (max-width: 321px) { html[lang=zh-TW] .centerall_nonSE { padding-left: 0.2em; } }
+
+/* center align large and medium */
+html[lang=zh-TW] .centeralign_05 { padding-left: 0.5em; }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centeralign { padding-left: 0; } }
+@media only screen and (max-width: 735px) and (max-device-width: 768px) { html[lang=zh-TW] .centeralign { padding-left: 0; } }
+@media only screen and (max-width: 735px){
+  html[lang=zh-TW] .centeralign_05 { padding-left: 0; }
+}
+/* --- iframe-notify for arcade-2019-10-30 ---*/
+
+
+/* é—´è· */
+html[lang=zh-TW] .centerall_999 { padding-top: 18em; }
+@media only screen and (max-width: 1068px) { html[lang=zh-TW] .centerall_999 { padding-top: 17em; } }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_999 { padding-top: 17em; } }
+
+
+html[lang=zh-TW] .centerall_777 { padding-top: 1em; }
+@media only screen and (max-width: 1068px) { html[lang=zh-TW] .centerall_777 { padding-top: 1em; } }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_777 { padding-top: 0.5em; } }
+
+
+/* for iphone-se hero centerall start */
+html[lang=zh-TW] .main [data-module-template="heroes"] [data-unit-id="iphone-se"] .background .subhead .centerall { padding-left: 0.6em; }
+/* for iphone-se hero centerall start */
+
+/*tv-plus-free-shows*/
+
+html[lang=zh-TW] .centerall_tv { padding-left: 0.5em; }
+@media only screen and (max-width: 735px) { html[lang=zh-TW] .centerall_tv { padding-left: 0.5em; } }
+@media only screen and (max-width: 735px) and (max-device-width: 768px) { html[lang=zh-TW] .centerall_tv { padding-left: 0.5em; } }
+
+/*temp add css for before us push*/
+.main [data-module-template="heroes"] [data-unit-id="iphone-se"] .unit-copy-wrapper .price-alt {
+    color: #86868b
+}
+
+
+/* watch æ–­è¡Œ */
+.main [data-module-template="promos"] [data-unit-id="watch-series-5"] .unit-copy-wrapper .subhead {
+    max-width:226px
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="promos"] [data-unit-id="watch-series-5"] .unit-copy-wrapper .subhead {
+        width: 93%
+    }
+}
+
+/* 20200605 ribbon */
+
+.main [data-module-template="ribbon"] [data-unit-id="covid-19"] .section-content-covid {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* large */
+.ribbon-covid-19 {
+    background-color: #f5f5f7;
+    display: flex;
+    align-items: center;
+}
+
+.covid-ribbon-copy {
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    padding: 12px 0;
+}
+
+/* medium */
+@media screen and (max-width: 1068px) and (min-width: 735px) {
+    .covid-ribbon-copy.variant {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+/* small */
+@media only screen and (max-width: 734px) {
+    .covid-ribbon-copy {
+        width: 96%;
+        max-width: 290px;
+        padding: 10px 0;
+    }
+}
+
+/* 2020 BTS */
+.main [data-module-template="promos"] [data-unit-id="back-to-school"] .unit-wrapper {
+    background:#f1f1f3
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="promos"] [data-unit-id="back-to-school"] .unit-copy-wrapper .headline {
+        max-width: 260px
+    }
+
+    html.text-zoom .main [data-module-template="promos"] [data-unit-id="back-to-school"] .unit-copy-wrapper .headline {
+        max-width:310px
+    }
+}
+/* BTS end */
+
+/* break for se */
+.break-for-se{
+    display: none;
+}
+@media only screen and (max-width: 340px) {
+    .break-for-se{
+        display: block;
+    }
+}
+/* break for se */
+
+/* fix watch-5 display 20200702*/
+.main [data-module-template="promos"] [data-unit-id="watch-series-5"] .unit-copy-wrapper .subhead {
+    display:block;
+    margin-top: 7px;
+    max-width:221px
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="promos"] [data-unit-id="watch-series-5"] .unit-copy-wrapper .subhead {
+        width: 93%
+    }
+}
+/* fix watch-5 display 20200702 end*/
+
+/* fix BTS overloop */
+
+@media only screen and (min-width: 1069px) and (max-width: 1440px) {
+    html.ac-ls-visible .main [data-module-template="promos"] [data-unit-id="back-to-school"] .unit-image-wrapper .unit-image {
+        top:308px;
+
+    }
+}
+/* fix BTS overloop */
+
+
+/* 2020-0817 */
+[data-unit-id="arcade-grindstone"] .unit-copy-wrapper .subhead {
+    padding-left: .6em;
+}
+
+[data-unit-id="arcade-grindstone"] .unit-copy-wrapper .cta-links {
+    padding-left: .8em;
+}
+
+
+/*Apple Events Teaser Tile*/
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="promos"] [data-unit-id="september-event"] .unit-copy-wrapper .subhead {
+        max-width: 240px
+    }
+}
+
+/*Apple Events Teaser Tile*/
+
+/*septem-takeover*/
+html[data-layout-name=september-takeover] .main [data-module-template="september-takeover"]{
+     height: 600vh;
+    display: block
+}
+
+@media only screen and (max-width: 734px) {
+    html[data-layout-name=september-takeover] .main [data-module-template="september-takeover-hero"] {
+        --ribbon-large: 0px;
+        --ribbon-small: 56px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="september-takeover"] .hero-violator span.hide-for-small {
+		display:none;
+	}
+}
+
+.main [data-module-template="september-takeover"] [data-unit-id="watch-series-6"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="watch-se"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="ipad"] .subhead {
+    margin-top:14px
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="september-takeover"] [data-unit-id="watch-series-6"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="watch-se"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="ipad"] .subhead {
+        margin-top:13px
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="september-takeover"] [data-unit-id="watch-series-6"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="watch-se"] .subhead,.main [data-module-template="september-takeover"] [data-unit-id="ipad"] .subhead {
+        margin-top: 6px
+    }
+}
+
+.main [data-module-template="september-takeover"] [data-unit-id="ipad"] .hero-violator.violator-alts {
+    color: #6e6e73
+}
+
+/*november-view-pricing*/
+
+.main [data-module-template="november-takeover-promos"] .cta-links .view-pricing {
+    padding-left: 37px;
+    padding-right: 38px;
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="november-takeover-promos"] .cta-links .view-pricing {
+        padding:13px 27px
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="november-takeover-promos"] .cta-links .view-pricing {
+        padding: 7px 24px
+    }
+}
+
+
+/*septem-takeover*/
+
+.logo-image-october-teaser-apple-event-logo {
+    background-image: url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_large.png");
+ /* width:51 , height:3 */
+width: 262px;
+height: 40px;
+background-size: 262px 40px;
+margin-bottom: 7px;}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    .logo-image-october-teaser-apple-event-logo {
+        background-image:url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_large_2x.png")}}
+@media only screen and (max-width: 1068px) {
+    .logo-image-october-teaser-apple-event-logo {
+        background-image: url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_medium.png");
+ /* width:37 , height:2 */
+width: 208px;
+height: 32px;
+background-size: 208px 32px;}}
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+    .logo-image-october-teaser-apple-event-logo {
+        background-image:url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_medium_2x.png")}}
+@media only screen and (max-width: 734px) {
+    .logo-image-october-teaser-apple-event-logo {
+        background-image: url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_small.png");
+ /* width:37 , height:2 */
+width: 208px;
+height: 32px;
+background-size: 208px 32px;}}
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+    .logo-image-october-teaser-apple-event-logo {
+        background-image:url("/tw/home/images/logos/october-teaser/apple_event_logo__4hknp7rkavma_small_2x.png")}}
+
+.logo-image-october-event-event-logo {
+    background-image: url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_large.png")}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    .logo-image-october-event-event-logo {
+        background-image:url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_large_2x.png")}}
+@media only screen and (max-width: 1068px) {
+    .logo-image-october-event-event-logo {
+        background-image: url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_medium.png")}}
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+    .logo-image-october-event-event-logo {
+        background-image:url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_medium_2x.png")}}
+@media only screen and (max-width: 734px) {
+    .logo-image-october-event-event-logo {
+        background-image: url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_small.png")}}
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+    .logo-image-october-event-event-logo {
+        background-image:url("/tw/home/images/logos/october-event/event_logo__dmqoh16rqn42_small_2x.png")}}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="heroes"] [data-unit-id="october-event"] .unit-copy-wrapper {
+        padding-bottom: 17px;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="heroes"] [data-unit-id="october-event"] .unit-copy-wrapper .subhead.alt {
+        max-width:265px
+    }
+}
+
+html[data-layout-name=november-takeover] .main [data-module-template="november-takeover-hero"] {
+    --ribbon-large: 44px;
+    --ribbon-small: 40px;
+}
+
+@media only screen and (max-width: 734px) {
+    html.fallback[data-layout-name=november-takeover] .main [data-module-template="november-takeover-hero"] .module-content, html.no-js[data-layout-name=november-takeover] .main [data-module-template="november-takeover-hero"] .module-content, html.reduced-motion[data-layout-name=november-takeover] .main [data-module-template="november-takeover-hero"] .module-content {
+        margin-top: -53px;
+    }
+}
+
+.main [data-module-template="november-takeover-promos"] [data-unit-id="m1-chip"] .subhead {
+    max-width:735px;
+}
+
+@media only screen and (max-width: 1068px) { 
+    .main [data-module-template="november-takeover-promos"] [data-unit-id="m1-chip"] .subhead {
+        max-width:565px;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="november-takeover-promos"] [data-unit-id="m1-chip"] .subhead {
+        max-width: 450px;
+    }
+}
+
+/*macbook-pro-13-logo*/
+@media only screen and (max-width: 320px) {
+    .main [data-module-template="november-takeover-promos"] [data-unit-id="macbook-pro-13"] .macbook-pro-13-logo {
+        margin-left: -15px;
+    }
+}
+
+
+/* hack for hide m1 link*/
+.hide-unit-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: all;
+}
+
+/* apple one logo start */
+.main [data-module-template="promos"] [data-unit-id="apple-one"] .avail .unit-copy-wrapper .headline {
+    margin-top:56px
+}
+
+@media only screen and (max-width: 1068px) {
+    .main [data-module-template="promos"] [data-unit-id="apple-one"] .avail .unit-copy-wrapper .headline {
+        margin-top:46px
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .main [data-module-template="promos"] [data-unit-id="apple-one"] .avail .unit-copy-wrapper .headline {
+        margin-top: 40px
+    }
+}
+
+
+  /* apple one logo end */
+
+  /*show-only-for-xsmall*/
+@media only screen and (max-width: 320px) {html[lang=zh-TW] .main br.show-only-for-xsmall {display: block}}
+
+.main .footnote{
+    font-size: 1em;
+    top: 0em;
+}
+
+.main [data-module-template="heroes"] [data-unit-id] .unit-wrapper sup a:not(.unit-link):hover {
+    text-decoration: none;
+}
+
+ /* SR */
+ @media only screen and (max-width: 734px) {
+    .main [data-module-template="promos"] [data-unit-id="esci-supplier-responsibility"] .unit-copy-wrapper .headline {
+        max-width: 318px;
+    }
+}
+
+ @media only screen and (max-width: 320px) {
+    .main [data-module-template="promos"] [data-unit-id="esci-supplier-responsibility"] .unit-copy-wrapper .headline {
+        max-width: 270px;
+    }
+}
+
+
+
+/*cny-gift-guide*/
+[data-layout-name$="-cny"][data-segment-code] [data-unit-id="cny-gift-guide"] {
+    display: block;
+}
