@@ -23,7 +23,7 @@ if (file_exists($filename)) {
         echo "資料已更新！";  
         echo "<br>";
     }else{
-        // 沒超過300秒 不更新
+        // 沒超過300秒 不更新 顯示提示
         echo "資料還未更新！";
     }
 } else {
