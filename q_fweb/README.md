@@ -8,7 +8,8 @@ date_default_timezone_set('Asia/Taipei');
 $filename ="./data/weather.json";
 // 抓 API 並更新 JSON 檔案 
 function updateWeather($filename) {
-    $url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=Taipei,TW&appid=2dac4978aa2278e716f6f7895b632224&lang=zh_TW";
+    include_once "./key.php";
+    $url = $key;
     $response = file_get_contents($url);
     file_put_contents($filename, $response);
 }
